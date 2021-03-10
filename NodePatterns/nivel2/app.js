@@ -35,11 +35,11 @@ console.log('\n');
 console.log('-------CHARACTERS DEALING DAMAGE---------');
 
 goku.dealDamage('genkidama');
-console.log(goku.damadeDealt);
+console.log(goku.damageDealt);
 vegeta.dealDamage('finalFlash');
-console.log(vegeta.damadeDealt);
+console.log(vegeta.damageDealt);
 android17.dealDamage('barrierPunch');
-console.log(android17.damadeDealt);
+console.log(android17.damageDealt);
 
 console.log('------------------------------------------');
 console.log('\n');
