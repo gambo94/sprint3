@@ -5,10 +5,6 @@ class User {
         this._name = name;
     }
 
-    update(){
-
-    }
-
     get name(){
         return this._name;
     }

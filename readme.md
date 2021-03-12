@@ -27,3 +27,19 @@ This game runs on app.js. How to create instances of the two classes Player and 
  - Decrease player's score: player.damageInflicted(quantity);
 
  *Attacks available: 'kame', 'finalFlash', 'genkidama', 'barrierPunch', 'beam'. If you don't select any of this, the default damage will be 500.
+
+ ##  Level 3 - Observer Topic Notification
+
+This app runs on app.js. How to create instances of the two classes User and Topic.
+
+- Creating new user: const 'user' = new User('name you want to use');
+- Creating new topic: const 'topic' = new Topic('name of the topic you want to use');
+
+### User(observers) methods:
+
+- Get user's name: user.name;
+
+### Topic(observable) methods;
+
+- Subscribe a user: topic.subscribe(observer);
+- Notify the observers: topic.notify(message);
