@@ -8,8 +8,8 @@ I've created two branches for this sprint. In the branch 'updated' there's a mod
 
 This game runs on app.js. How to create instances of the two classes Player and FightingGame:
 
-- Creating new player: const player = new Player('name you want to use');
-- Creating new game: const fight = new FightingGame('name you want to use');
+- Creating new player: const 'player' = new Player('name you want to use');
+- Creating new game: const 'fight' = new FightingGame('name you want to use');
 
 
  ### Game methods:
