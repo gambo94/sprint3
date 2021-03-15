@@ -22,15 +22,26 @@ const reverseText = str =>
 
 
 
-const generatePromises = (array, inputFolder) => {
+const generateAndSolvePromises = (array, inputFolder, outputFolder) => {
   const proimsesArray = [];
   for (file of array){
       
-      // generates as many promises as the number of files
+    // generates as many promises as the number of files
       proimsesArray.push(readFile(join(inputFolder, file), 'utf-8'));
       console.log(`The file ${file} has been read correctly`);
   }
-  return proimsesArray;
+
+  // iterating over the promises and solving them by writing the data collected before
+    for (let i = 0; i < proimsesArray.length; i++){
+      proimsesArray[i]
+        .then((data) => {
+          writeFile(join(outputFolder, array[i]), reverseText(data))
+            .then(() => console.log(array[i] + ' correctly reversed'))
+            .catch((err) => console.log('Folder might not extist, make sure to create a folder named "outbox"', err));
+      })
+  }
+return array;
+
 }
 
 
@@ -39,18 +50,7 @@ const reverseFileText = async (inputFolder, outputFolder) => {
   // generates an array of files once the function has read the entire given folder
   const arrayFiles = await readdir(inputFolder);
   // generating an array of promises that return the data of the read files only when all the data has been read
-  const arrayOfPromises = await generatePromises(arrayFiles, inputFolder);
-
-
-  // iterating over the promises and solving them by writing the data collected before
-  for (let i = 0; i < arrayOfPromises.length; i++){
-      arrayOfPromises[i]
-        .then((data) => {
-          writeFile(join(outputFolder, arrayFiles[i]), reverseText(data));
-          console.log(`The file: ${arrayFiles[i]} has been reverse written correctly, check the folder: ${basename(resolve(outputFolder))}`)
-      })
-  }
-  return arrayFiles;
+  generateAndSolvePromises(arrayFiles, inputFolder, outputFolder);
 }
 
 reverseFileText(inbox, outbox)
