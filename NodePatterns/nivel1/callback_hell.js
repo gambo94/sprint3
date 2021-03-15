@@ -44,9 +44,10 @@ const reverseFileText = async (inputFolder, outputFolder) => {
 
   // iterating over the promises and solving them by writing the data collected before
   for (let i = 0; i < arrayOfPromises.length; i++){
-      arrayOfPromises[i].then((data) => {
+      arrayOfPromises[i]
+        .then((data) => {
           writeFile(join(outputFolder, arrayFiles[i]), reverseText(data));
-          console.log(`The file: ${arrayFiles[i]} has been reverse written correctly, check the folder: ${basename(resolve(outputFolder))}`);
+          console.log(`The file: ${arrayFiles[i]} has been reverse written correctly, check the folder: ${basename(resolve(outputFolder))}`)
       })
   }
   return arrayFiles;
